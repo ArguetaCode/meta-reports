@@ -1,6 +1,7 @@
 package com.sodi.metareports.configuration;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Test;
@@ -22,5 +23,10 @@ class SecurityConfigurationTest {
     @Test
     void applicationRoutesRequireAuthentication() throws Exception {
         mockMvc.perform(get("/")).andExpect(status().is3xxRedirection());
+    }
+
+    @Test
+    void postWithoutCsrfIsForbidden() throws Exception {
+        mockMvc.perform(post("/logout")).andExpect(status().isForbidden());
     }
 }

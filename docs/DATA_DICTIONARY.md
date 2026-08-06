@@ -1,6 +1,6 @@
 # Diccionario de datos preliminar
 
-> Fase 2 ejecutable en V2–V7: `app_user`, roles/permisos, `client`, branding, activos Meta, asociaciones históricas, prefijos y `audit_log`. UUID es identidad interna, IDs Meta son `VARCHAR` y snapshots son `JSONB`. Las migraciones prevalecen sobre propuestas preliminares de este documento.
+> Fases 2–3 ejecutables en V2–V8: además del catálogo, V8 agrega ejecuciones, campaña/conjunto/anuncio, clasificación vigente e incidencias. UUID es identidad interna, IDs Meta son `VARCHAR` y payload/señales son `JSONB`. Las migraciones prevalecen sobre propuestas preliminares.
 
 ## Excel revisado
 
@@ -52,6 +52,21 @@ El libro contiene `Worksheet` (detalle exportado/enriquecido) y `Hoja1` (tabla d
 - El dato contextual sobre usuarios de Facebook en Honduras carece de fuente y fecha.
 - El PDF afirma resultados “increíbles” y causalidad inversión-resultados sin umbral o comparación.
 - Las capturas manuales no conservan definición API, filtros, fecha de extracción ni auditabilidad.
+
+## Fase 4: decisiones de clasificación
+
+- `manual_ad_assignment`: asignación manual vigente por anuncio, cliente, nota, actor y fechas. Tiene prioridad sobre la clasificación automática.
+- `incident_resolution_history`: historial inmutable de acciones `RESOLVE`, `IGNORE` y `REPROCESS`, con estado anterior/resultante y cliente seleccionado.
+- `ad_classification.method` admite `MANUAL`; no se modifica el significado de los métodos automáticos existentes.
+
+## Métricas y revisión mensual
+
+- `daily_ad_insight`: gasto, impresiones, alcance y clics diarios por anuncio, fuente y ventana de atribución.
+- `insight_action`: acciones tipadas asociadas a un insight; no colapsa conversaciones, clics u otras acciones.
+- `exchange_rate`: tasa mensual por par de monedas y fuente declarada.
+- `report_period`: cliente, rango dentro de un solo mes, moneda del informe y copia congelada de la tasa utilizada.
+
+El alcance mostrado en la revisión es suma de alcance diario y se etiqueta como tal; no debe presentarse como alcance único mensual.
 
 ## Reglas de cálculo propuestas
 

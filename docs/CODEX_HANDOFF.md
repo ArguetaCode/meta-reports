@@ -1,6 +1,6 @@
 # Contexto de traspaso para Codex
 
-Actualizado: 2026-08-06. Zona horaria: America/Guatemala.
+Actualizado: 2026-08-06, después de implementar la fase 3. Zona horaria: America/Guatemala.
 
 ## Ubicación y Git
 
@@ -121,9 +121,21 @@ Arrancar una vez, confirmar el usuario y cambiar `INITIAL_ADMIN_ENABLED=false`. 
 - La asignación de usuarios a clientes/tenants todavía no existe. No asumir aislamiento por cliente hasta diseñarlo explícitamente.
 - Antes de fase 3 conviene hacer una prueba manual renderizada de todas las vistas Thymeleaf.
 
+## Fase 3 implementada
+
+V8 incorpora `sync_execution`, campaña/conjunto/anuncio, clasificación vigente e incidencias. `phase3-demo.json` se consume mediante `MetaDataSource`, procesa dos páginas con transacciones cortas y usa upserts idempotentes. La clasificación prioriza Page, Instagram y cuenta exclusiva; el prefijo no asigna por sí solo. Las pantallas están en `/admin/synchronizations` y `/admin/incidents`. Consulte `docs/SIMULATED_SYNCHRONIZATION.md`.
+
+## Fase 4 implementada
+
+V9 incorpora `manual_ad_assignment` e `incident_resolution_history`. `IncidentService` permite resolver con un cliente activo, ignorar con motivo y reprocesar un anuncio. La asignación manual tiene prioridad y no se pierde en sincronizaciones posteriores. Todas las acciones requieren `INCIDENT_RESOLVE` y generan historial y auditoría.
+
+## Métricas y períodos implementados
+
+V10 incorpora `daily_ad_insight`, `insight_action`, `exchange_rate` y `report_period`. El fixture `phase5-metrics.json` es idempotente. `/admin/metrics` permite importar, registrar tasas y crear períodos mensuales; `/admin/reports/{id}/review` consolida únicamente anuncios clasificados para el cliente y mantiene separado el gasto original del convertido.
+
 ## Próxima fase recomendada
 
-Fase 3: fixtures Meta anonimizados, normalización de respuestas, sincronización simulada e idempotente, clasificación a nivel anuncio e incidencias. No conectar la API real hasta validar permisos, campos y fixtures.
+Fase 4: métricas pagadas tipadas, acciones, tipo de cambio e inicio del flujo de resolución de incidencias. No conectar la API real hasta validar permisos, campos y fixtures.
 
 Orden sugerido:
 

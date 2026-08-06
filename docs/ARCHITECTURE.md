@@ -1,6 +1,6 @@
 # Arquitectura
 
-> Fase 2: `auth/user/role` implementan sesiones y RBAC; `client/branding/metaaccount` el catálogo e historiales; `audit` centraliza eventos; `filemanagement` abstrae logos externos. Controllers delegan en servicios/repositorios y Flyway es la autoridad del esquema. Véanse `SECURITY_MODEL.md`, `CLIENT_ASSET_MODEL.md` y ADR 0002.
+> Fases 2–3: `auth/user/role` implementan sesiones y RBAC; `client/branding/metaaccount` el catálogo; `metaintegration` expone el puerto y fixture; `synchronization` orquesta páginas/upserts; `classification` aplica señales; `incident` persiste excepciones. Véanse también `SIMULATED_SYNCHRONIZATION.md` y V8.
 
 ## Estilo
 
@@ -35,7 +35,10 @@ flowchart LR
 - `insight`, `organic`, `metric`: hechos pagados/orgánicos, acciones tipadas y cálculos.
 - `classification`: resolución por señales priorizadas, sin confiar en request tenant-scoped.
 - `incident`: revisión y resolución auditable.
+- `incident` encapsula resolución, descarte y reprocesamiento unitario; las asignaciones manuales persisten separadas de las señales importadas.
 - `exchangerate`: tasas por fecha/fuente y conversión BigDecimal.
+- `metric`: fixture pagado diario idempotente, acciones tipadas y consultas consolidadas sin mezclar fuentes.
+- `report`: período mensual de revisión con moneda y tasa congeladas antes de generar archivos.
 - `report`, `excel`, `pdf`: snapshots y generadores sobre un modelo común.
 - `filemanagement`: interfaz de storage, rutas seguras, checksum y retención.
 - `audit`, `scheduling`, `configuration`, `shared`: preocupaciones transversales.

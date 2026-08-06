@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -28,6 +29,13 @@ public class GlobalExceptionHandler {
         log.warn("Persistence conflict: {}", exception.getMessage());
         model.addAttribute("message", "El registro ya existe o entra en conflicto con una asociación actual.");
         return "error/error";
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    String accessDenied(Model model) {
+        model.addAttribute("message", "No tiene permisos para realizar esta operación.");
+        return "auth/access-denied";
     }
 
     @ExceptionHandler(Exception.class)

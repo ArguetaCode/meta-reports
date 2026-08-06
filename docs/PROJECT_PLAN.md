@@ -1,6 +1,6 @@
 # Plan del proyecto SODI Meta Reports
 
-> Estado al 2026-08-03: fase 2 implementada con usuarios/RBAC persistentes, bloqueo y bootstrap seguro, clientes, branding, activos e historiales, prefijos, auditoría, UI administrativa y migraciones V2–V7. PostgreSQL/Testcontainers se ejecuta realmente con el Maven Wrapper. Meta, clasificación completa e informes permanecen en fases posteriores.
+> Estado al 2026-08-06: seguridad, catálogo, sincronización, clasificación, incidencias y revisión métrica implementados. V10 agrega métricas pagadas diarias, acciones, tasas mensuales y períodos con conversión congelada. No existen llamadas reales a Meta ni archivos finales.
 
 ## Contexto y problema
 

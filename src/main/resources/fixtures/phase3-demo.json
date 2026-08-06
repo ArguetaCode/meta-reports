@@ -1,0 +1,59 @@
+{
+  "name": "phase3-demo",
+  "pages": [
+    {
+      "cursor": null,
+      "nextCursor": "page-2",
+      "records": [
+        {
+          "adAccountId": "act_930000000000002",
+          "campaignId": "940000000000001",
+          "campaignName": "REV-TEST Campaña reconocida",
+          "campaignStatus": "ACTIVE",
+          "adSetId": "950000000000001",
+          "adSetName": "Audiencia demo",
+          "adSetStatus": "ACTIVE",
+          "adId": "960000000000001",
+          "adName": "Anuncio con activos reconocidos",
+          "adStatus": "ACTIVE",
+          "facebookPageId": "910000000000001",
+          "instagramAccountId": "920000000000001"
+        },
+        {
+          "adAccountId": "930000000000004",
+          "campaignId": "940000000000002",
+          "campaignName": "REV-TEST Campaña solo prefijo",
+          "campaignStatus": "PAUSED",
+          "adSetId": "950000000000002",
+          "adSetName": "Audiencia sin actor",
+          "adSetStatus": "PAUSED",
+          "adId": "960000000000002",
+          "adName": "Anuncio sin actor",
+          "adStatus": "PAUSED",
+          "facebookPageId": null,
+          "instagramAccountId": null
+        }
+      ]
+    },
+    {
+      "cursor": "page-2",
+      "nextCursor": null,
+      "records": [
+        {
+          "adAccountId": "930000000000004",
+          "campaignId": "940000000000003",
+          "campaignName": "ZZZ Campaña sin catálogo",
+          "campaignStatus": "ACTIVE",
+          "adSetId": "950000000000003",
+          "adSetName": "Audiencia desconocida",
+          "adSetStatus": "ACTIVE",
+          "adId": "960000000000003",
+          "adName": "Anuncio con señales desconocidas",
+          "adStatus": "ACTIVE",
+          "facebookPageId": "999000000000001",
+          "instagramAccountId": "999000000000002"
+        }
+      ]
+    }
+  ]
+}

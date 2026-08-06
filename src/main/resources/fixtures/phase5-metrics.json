@@ -1,0 +1,8 @@
+{
+  "records": [
+    {"adId":"960000000000001","date":"2026-07-01","currency":"USD","attributionWindow":"7d_click_1d_view","spend":12.50,"impressions":2100,"reach":1700,"clicks":64,"actions":{"link_click":51,"messaging_conversation_started_7d":4}},
+    {"adId":"960000000000001","date":"2026-07-02","currency":"USD","attributionWindow":"7d_click_1d_view","spend":15.75,"impressions":2450,"reach":1880,"clicks":73,"actions":{"link_click":59,"messaging_conversation_started_7d":6}},
+    {"adId":"960000000000002","date":"2026-07-01","currency":"USD","attributionWindow":"7d_click_1d_view","spend":8.25,"impressions":1320,"reach":1100,"clicks":31,"actions":{"link_click":24}},
+    {"adId":"960000000000003","date":"2026-07-01","currency":"USD","attributionWindow":"7d_click_1d_view","spend":5.00,"impressions":800,"reach":710,"clicks":12,"actions":{"link_click":9}}
+  ]
+}
