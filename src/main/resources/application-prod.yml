@@ -1,0 +1,12 @@
+server:
+  forward-headers-strategy: framework
+  servlet:
+    session:
+      cookie:
+        secure: true
+spring:
+  jpa:
+    show-sql: false
+logging:
+  level:
+    root: INFO

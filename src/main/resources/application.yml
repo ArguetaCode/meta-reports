@@ -1,0 +1,72 @@
+spring:
+  application:
+    name: meta-reports
+  profiles:
+    default: dev
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:${POSTGRES_PORT:5432}/${POSTGRES_DB:meta_reports}}
+    username: ${SPRING_DATASOURCE_USERNAME:${POSTGRES_USER:meta_reports}}
+    password: ${SPRING_DATASOURCE_PASSWORD:${POSTGRES_PASSWORD:meta_reports}}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+  servlet:
+    multipart:
+      max-file-size: ${MAX_UPLOAD_SIZE:5MB}
+      max-request-size: ${MAX_UPLOAD_SIZE:5MB}
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    session:
+      timeout: ${SESSION_TIMEOUT:30m}
+      cookie:
+        http-only: true
+        same-site: lax
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+app:
+  timezone: ${APP_TIMEZONE:America/Guatemala}
+  storage-path: ${APP_STORAGE_PATH:./storage}
+  logo:
+    max-size-bytes: ${APP_LOGO_MAX_SIZE_BYTES:5242880}
+  security:
+    max-failed-attempts: ${APP_SECURITY_MAX_FAILED_ATTEMPTS:5}
+    lock-duration-minutes: ${APP_SECURITY_LOCK_DURATION_MINUTES:15}
+    password-min-length: ${APP_SECURITY_PASSWORD_MIN_LENGTH:12}
+    password-strength: ${APP_SECURITY_PASSWORD_STRENGTH:12}
+  initial-admin:
+    enabled: ${INITIAL_ADMIN_ENABLED:false}
+    username: ${INITIAL_ADMIN_USERNAME:}
+    email: ${INITIAL_ADMIN_EMAIL:}
+    password: ${INITIAL_ADMIN_PASSWORD:}
+    first-name: ${INITIAL_ADMIN_FIRST_NAME:}
+    last-name: ${INITIAL_ADMIN_LAST_NAME:}
+  scheduling:
+    meta-sync:
+      enabled: ${META_SYNC_ENABLED:false}
+      cron: ${META_SYNC_CRON:0 0 2 * * *}
+    monthly-report:
+      enabled: ${MONTHLY_REPORT_ENABLED:false}
+      cron: ${MONTHLY_REPORT_CRON:0 0 6 1 * *}
+meta:
+  graph-api-version: ${META_GRAPH_API_VERSION:}
+  app-id: ${META_APP_ID:}
+  app-secret: ${META_APP_SECRET:}
+  access-token: ${META_ACCESS_TOKEN:}
+  business-id: ${META_BUSINESS_ID:}
+  connect-timeout: ${META_CONNECT_TIMEOUT:5s}
+  read-timeout: ${META_READ_TIMEOUT:30s}
+  max-retries: ${META_MAX_RETRIES:3}

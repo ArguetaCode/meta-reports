@@ -1,0 +1,9 @@
+spring:
+  jpa:
+    show-sql: false
+logging:
+  level:
+    com.sodi.metareports: DEBUG
+app:
+  demo-data:
+    enabled: ${APP_DEMO_DATA_ENABLED:false}

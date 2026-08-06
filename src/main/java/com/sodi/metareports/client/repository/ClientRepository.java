@@ -1,0 +1,2 @@
+package com.sodi.metareports.client.repository; import com.sodi.metareports.client.entity.Client; import java.util.UUID; import org.springframework.data.domain.*; import org.springframework.data.jpa.repository.JpaRepository;
+public interface ClientRepository extends JpaRepository<Client,UUID>{boolean existsByCodeIgnoreCase(String code); Page<Client> findAllByOrderByCommercialNameAsc(Pageable pageable);}
